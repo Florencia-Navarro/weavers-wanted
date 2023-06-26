@@ -18,7 +18,7 @@
     <header>
         <section class="w-full h-36 bg-[#507DBC]"
             style="background-image: url('img/pexels-engin-akyurt-1487703.jpg');"
-        >
+            >
             <section class="bg-gradient-to-r from-[#08101F] to-[#507DBC] shadow-lg shadow-blue-950 w-full flex flex-row fixed z-10">
                 <article class="w-11/12 flex flex-row">
                     <figure class="w-20 h-20 m-3">
@@ -26,8 +26,15 @@
                     </figure>
                     <h2 class="text-white text-2xl my-auto">TEJEDOR@S , SE BUSCAN</h2>
                 </article>
-                <article class="my-auto px-3.5">
+                <article class="my-auto px-3.5 lg:hidden">
                     <i class="fa-solid fa-ellipsis-vertical text-2xl text-white  "></i>
+                </article>
+                <article class="hidden lg:block">
+                    <article class="flex mt-8 mr-8">
+                        <a href="" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]">HOME</a>
+                        <a href="" class="text-xs text-white m-2 px-3.5 py-2 rounded-md hover:bg-[#08101F]">AGREGAR PUESTO</a>
+                        <a href="" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]">CATEGORÍAS</a>
+                    </article>
                 </article>
             </section>
         </section>
@@ -53,7 +60,6 @@
                             CATEGORÍAS</li>
                     </ul>
                 </nav> 
-                
             </section>
         </section>
     
@@ -62,9 +68,9 @@
 
         <!-- FILTERS -->
 
-        <section class="hidden">
-            <section class="flex flex-col">
-                <section class=" m-3 p-2 flex flex-row justify-around">
+        <section class="lg:flex lg:flex-row" >
+            <section class="flex flex-col sm:flex-row lg:flex-col lg:m-10">
+                <section class=" m-3 p-2 flex flex-row justify-around lg:flex-col">
                     <article class="mx-1">
                         <label for="" class="my-2">Categoria</label>
                         <select name="" id="" class="rounded-md my-3">
@@ -90,15 +96,15 @@
                         </select>
                     </article>
                 </section>
-                <article class="flex">
-                    <button class="ml-5 mr-2 p-2 bg-[#E1A41F] text-xs rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Buscar</button>
-                    <button class="ml-2 mr-5 p-2 bg-[#E1A41F] text-xs rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Reestablecer filtros</button>
+                <article class="flex sm:items-center">
+                    <button class="ml-5 mr-2 p-2 bg-[#E1A41F] text-xs rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white sm:h-12 sm:px-3">Buscar</button>
+                    <button class="ml-2 mr-5 p-2 bg-[#E1A41F] text-xs rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white sm:h-12 sm:px-3">Reestablecer filtros</button>
                 </article>
             </section>
     
             <!------------------ CARDS- ------------------>
 
-            <section class="flex flex-row overflow-x-scroll">
+            <section class="flex flex-row overflow-x-scroll lg:flex-wrap lg:justify-center lg:m-5 lg:overflow-x-hidden">
                 <section class="my-3 mx-5">
                     <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
                         <article>
@@ -216,7 +222,7 @@
 
         <!-- CARD DETAIL -->
 
-        <section class="mx-6 mt-6 mb-9">
+        <section class="mx-6 mt-6 mb-9 hidden">
             <article class="bg-white w-72 h-96 rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950"
                 style="background-image: url('https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');"
                 >
@@ -249,12 +255,24 @@
             </article>
         </section>
 
-        
+        <!-- MODAL CONFIRM -->
+
+        <section class="bg-gradient-to-r from-[#08101F] from-10% via-transparent via-30% to-[#08101F] to-90% fixed top-0 right-0 left-0 bottom-0 flex hidden">
+            <section class="bg-white w-11/12 max-w-xl max-h-96 m-auto px-3 py-5 rounded-md">
+                <article>
+                    <h4 class="pl-2 mb-3">¿Estas seguro que deseas borrar esta postulación?</h4>
+                    <article class="flex">
+                        <button class="m-2 px-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Borrar</button>
+                        <button class="text-white m-2 px-2 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] hover:text-white">Cancelar</button>
+                    </article>
+                </article>                
+            </section>
+        </section>
 
         <!-- ADD JOBS -->
 
         <section class="hidden">
-            <section class="bg-white w-11/12 mx-auto my-3.5 shadow-md shadow-blue-950 rounded-md">
+            <section class="bg-white w-11/12 max-w-3xl mx-auto my-3.5 shadow-md shadow-blue-950 rounded-md">
                 <form action="" class="m-3">
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">EMPRESA</label>
