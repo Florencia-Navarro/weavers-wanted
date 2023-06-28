@@ -22,54 +22,57 @@
             <section class="bg-gradient-to-r from-[#08101F] to-[#507DBC] shadow-lg shadow-blue-950 w-full flex flex-row fixed z-10">
                 <article class="w-11/12 flex flex-row">
                     <figure class="w-20 h-20 m-3">
-                        <img  src="img/yarn-ball.png" alt="ovillo de lana">
+                        <a href="index.html">
+                            <img  src="img/yarn-ball.png" alt="ovillo de lana">
+                        </a>
                     </figure>
                     <h2 class="text-white text-2xl my-auto">TEJEDOR@S , SE BUSCAN</h2>
                 </article>
-                <article class="my-auto px-3.5 lg:hidden">
+                <article class="my-auto px-3.5 lg:hidden" id="sidebar-open">
                     <i class="fa-solid fa-ellipsis-vertical text-2xl text-white  "></i>
                 </article>
                 <article class="hidden lg:block">
                     <article class="flex mt-8 mr-8">
-                        <a href="" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]">HOME</a>
-                        <a href="" class="text-xs text-white m-2 px-3.5 py-2 rounded-md hover:bg-[#08101F]">AGREGAR PUESTO</a>
-                        <a href="" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]">CATEGORÍAS</a>
+                        <a href="index.html" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]" id="home-sidebar-btn">HOME</a>
+                        <a class="text-xs text-white m-2 px-3.5 py-2 rounded-md hover:bg-[#08101F]" id="add-job-form-show">AGREGAR PUESTO</a>
                     </article>
                 </article>
             </section>
         </section>
     </header>
 
-    <!-- SIDEBAR NAV --> 
-
-        <section class="bg-gradient-to-r from-[#08101F] from-10% to-transparent transition-transform -translate-x-full fixed top-0 right-0 left-0 bottom-0 flex justify-end hidden">
-            <section class="bg-white  w-11/12 h-96">
-                <article>
-                    <i class="fa-solid fa-arrow-right m-5 text-blue-950"></i>
-                </article>
-                <nav>
-                    <ul class="border-t-2 border-blue-950">
-                        <li class="m-8 text-blue-950">
-                            <i class="fa-solid fa-house"></i>
-                            HOME</li>
-                        <li class="m-8 text-blue-950">
-                            <i class="fa-solid fa-circle-plus"></i>
-                            AGREGAR PUESTO</li>
-                        <li class="m-8 text-blue-950">
-                            <i class="fa-brands fa-yarn"></i>
-                            CATEGORÍAS</li>
-                    </ul>
-                </nav> 
-            </section>
-        </section>
     
 
     <main>
-
-        <!-- FILTERS -->
+        
+        <!-- SIDEBAR NAV --> 
+    
+            <section class="bg-gradient-to-r from-[#08101F] from-10% to-transparent fixed top-0 right-0 left-0 bottom-0 flex justify-end z-20 hidden" id="sidebar-menu">
+                <section class="bg-white  w-11/12 h-96">
+                    <article id="sidebar-close">
+                        <i class="fa-solid fa-arrow-right m-5 text-blue-950"></i>
+                    </article>
+                    <nav>
+                        <ul class="border-t-2 border-blue-950">
+                            <li class="m-8 text-blue-950">
+                                <i class="fa-solid fa-house"></i>
+                                <a href="index.html">HOME</a>
+                            </li>
+                            <li class="m-8 text-blue-950">
+                                <i class="fa-brands fa-yarn"></i>
+                                <a id="category-side-btn">CATEGORÍAS</a>
+                            </li>
+                        </ul>
+                    </nav> 
+                </section>
+            </section>
+        
 
         <section class="lg:flex lg:flex-row" >
-            <section class="flex flex-col sm:flex-row lg:flex-col lg:m-10">
+
+            <!-- FILTERS -->
+
+            <section class="flex flex-col sm:flex-row lg:flex-col lg:m-10" id="filters-container">
                 <section class=" m-3 p-2 flex flex-row justify-around lg:flex-col">
                     <article class="mx-1">
                         <label for="" class="my-2">Categoria</label>
@@ -104,7 +107,7 @@
     
             <!------------------ CARDS- ------------------>
 
-            <section class="flex flex-row overflow-x-scroll lg:flex-wrap lg:justify-center lg:m-5 lg:overflow-x-hidden">
+            <section class="flex flex-row overflow-x-scroll lg:flex-wrap lg:justify-center lg:m-5 lg:overflow-x-hidden" id="cards-container">
                 <section class="my-3 mx-5">
                     <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
                         <article>
@@ -271,7 +274,7 @@
 
         <!-- ADD JOBS -->
 
-        <section class="hidden">
+        <section class="hidden" id="add-job-form">
             <section class="bg-white w-11/12 max-w-3xl mx-auto my-3.5 shadow-md shadow-blue-950 rounded-md">
                 <form action="" class="m-3">
                     <article class="flex flex-col">
@@ -347,7 +350,7 @@
     </footer>
 
     
-
+<script src="js/app.js"></script>
     
 </body>
 </html>
