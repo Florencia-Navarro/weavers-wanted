@@ -21,11 +21,20 @@ const initializeApp = () => {
         hideElement("#sidebar-menu")
     })
 
-    $("#add-job-btn").addEventListener("click", () => {
+    $("#add-job-form-show").addEventListener("click", () => {
         hideElement("#filters-container")
         hideElement("#cards-container")
         showElement("#add-job-form")
     })
+
+    $("#category-side-btn").addEventListener("click", () => {
+        hideElement("#filters-container")
+        hideElement("#cards-container")
+        hideElement("#sidebar-menu")
+        showElement("#add-job-form")
+    })
+
+    
 
 }
 
