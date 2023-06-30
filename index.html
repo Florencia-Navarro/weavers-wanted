@@ -19,7 +19,7 @@
         <section class="w-full h-36 bg-[#507DBC]"
             style="background-image: url('img/pexels-engin-akyurt-1487703.jpg');"
             >
-            <section class="bg-gradient-to-r from-[#08101F] to-[#507DBC] shadow-lg shadow-blue-950 w-full flex flex-row fixed z-10">
+            <section class="bg-gradient-to-r from-[#08101F] to-[#507DBC] shadow-lg shadow-blue-950 w-full flex flex-row fixed z-20">
                 <article class="w-11/12 flex flex-row">
                     <figure class="w-20 h-20 m-3">
                         <a href="index.html">
@@ -33,41 +33,42 @@
                 </article>
                 <article class="hidden lg:block">
                     <article class="flex mt-8 mr-8">
-                        <a href="index.html" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]" id="home-sidebar-btn">HOME</a>
+                        <a href="index.html" class="text-xs text-white m-2 px-3.5 pt-3.5 rounded-md hover:bg-[#08101F]">HOME</a>
                         <a class="text-xs text-white m-2 px-3.5 py-2 rounded-md hover:bg-[#08101F]" id="add-job-form-show">AGREGAR PUESTO</a>
                     </article>
                 </article>
             </section>
         </section>
+
+        <!-- SIDEBAR NAV --> 
+    
+        <section class="bg-gradient-to-r from-[#08101F] from-10% to-transparent fixed top-0 right-0 left-0 bottom-0 flex justify-end z-30 hidden" id="sidebar-menu">
+            <section class="bg-white  w-11/12 h-96">
+                <article id="sidebar-close">
+                    <i class="fa-solid fa-arrow-right m-5 text-blue-950"></i>
+                </article>
+                <nav>
+                    <ul class="border-t-2 border-blue-950">
+                        <li class="m-8 text-blue-950">
+                            <i class="fa-solid fa-house"></i>
+                            <a href="index.html">HOME</a>
+                        </li>
+                        <li class="m-8 text-blue-950">
+                            <i class="fa-brands fa-yarn"></i>
+                            <a id="add-form-side-btn">AGREGAR PUESTO</a>
+                        </li>
+                    </ul>
+                </nav> 
+            </section>
+        </section>
+
+
     </header>
 
     
 
     <main>
         
-        <!-- SIDEBAR NAV --> 
-    
-            <section class="bg-gradient-to-r from-[#08101F] from-10% to-transparent fixed top-0 right-0 left-0 bottom-0 flex justify-end z-20 hidden" id="sidebar-menu">
-                <section class="bg-white  w-11/12 h-96">
-                    <article id="sidebar-close">
-                        <i class="fa-solid fa-arrow-right m-5 text-blue-950"></i>
-                    </article>
-                    <nav>
-                        <ul class="border-t-2 border-blue-950">
-                            <li class="m-8 text-blue-950">
-                                <i class="fa-solid fa-house"></i>
-                                <a href="index.html">HOME</a>
-                            </li>
-                            <li class="m-8 text-blue-950">
-                                <i class="fa-brands fa-yarn"></i>
-                                <a id="category-side-btn">CATEGORÍAS</a>
-                            </li>
-                        </ul>
-                    </nav> 
-                </section>
-            </section>
-        
-
         <section class="lg:flex lg:flex-row" >
 
             <!-- FILTERS -->
@@ -97,6 +98,7 @@
                             <option value="">Remoto</option>
                             <option value="">Presencial</option>
                         </select>
+
                     </article>
                 </section>
                 <article class="flex sm:items-center">
@@ -107,121 +109,56 @@
     
             <!------------------ CARDS- ------------------>
 
-            <section class="flex flex-row overflow-x-scroll lg:flex-wrap lg:justify-center lg:m-5 lg:overflow-x-hidden" id="cards-container">
-                <section class="my-3 mx-5">
-                    <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
-                        <article>
-                            <figure>
-                                <img class="object-cover w-full h-48" src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="mujercon sweter tejido">
-                            </figure>
-                        </article>
-                        <article class="m-2 gap-1 ">
-                            <h5 class="mb-3">TEJIDOS ANA</h5>
-                            <h3 >Especialista en crochet</h3>
-                            <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus turpis in eu mi bibendum neque.</p>
-                            <article class="w-full flex flex-row justify between">
-                                <article class="w-2/4">
-                                    <p class="mt-3 text-xs">
-                                        <i class="fa-regular fa-building"></i>
-                                        Remoto</p>
-                                    <p class="text-xs"> 
-                                        <i class="fa-solid fa-hammer"></i>
-                                        Con experiencia</p>
-                                </article>
-                                <article class="w-2/4 flex justify-end">
-                                    <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Ver detalle</button>
+            <section>
+                <section class="flex flex-row overflow-x-scroll lg:flex-wrap lg:justify-center lg:m-5 lg:overflow-x-hidden" id="cards-container">
+                     <!--<section class="my-3 mx-5">
+                        <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
+                            <article>
+                                <figure>
+                                    <img class="object-cover w-full h-48" src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="mujercon sweter tejido">
+                                </figure>
+                            </article>
+                            <article class="m-2 gap-1 ">
+                                <h5 class="mb-3">TEJIDOS ANA</h5>
+                                <h3 >Especialista en crochet</h3>
+                                <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus turpis in eu mi bibendum neque.</p>
+                                <article class="w-full flex flex-row justify between">
+                                    <article class="w-2/4">
+                                        <p class="mt-3 text-xs">
+                                            <i class="fa-regular fa-building"></i>
+                                            Remoto</p>
+                                        <p class="text-xs"> 
+                                            <i class="fa-solid fa-hammer"></i>
+                                            Con experiencia</p>
+                                    </article>
+                                    <article class="w-2/4 flex justify-end">
+                                        <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Ver detalle</button>
+                                    </article>
                                 </article>
                             </article>
                         </article>
-                    </article>
-                </section>
-    
-                <section class="my-3 mx-5">
-                    <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
-                        <article>
-                            <figure>
-                                <img class="object-cover w-full h-48" src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="mujercon sweter tejido">
-                            </figure>
-                        </article>
-                        <article class="m-2 gap-1 ">
-                            <h5 class="mb-3">TEJIDOS ANA</h5>
-                            <h3 >Especialista en crochet</h3>
-                            <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus turpis in eu mi bibendum neque.</p>
-                            <article class="w-full flex flex-row justify between">
-                                <article class="w-2/4">
-                                    <p class="mt-3 text-xs">
-                                        <i class="fa-regular fa-building"></i>
-                                        Remoto</p>
-                                    <p class="text-xs"> 
-                                        <i class="fa-solid fa-hammer-crash"></i>
-                                        Con experiencia</p>
-                                </article>
-                                <article class="w-2/4 flex justify-end">
-                                    <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Ver detalle</button>
-                                </article>
-                            </article>
-                        </article>
-                    </article>
-                </section>
-    
-                <section class="my-3 mx-5">
-                    <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
-                        <article>
-                            <figure>
-                                <img class="object-cover w-full h-48" src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="mujercon sweter tejido">
-                            </figure>
-                        </article>
-                        <article class="m-2 gap-1 ">
-                            <h5 class="mb-3">TEJIDOS ANA</h5>
-                            <h3 >Especialista en crochet</h3>
-                            <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus turpis in eu mi bibendum neque.</p>
-                            <article class="w-full flex flex-row justify between">
-                                <article class="w-2/4">
-                                    <p class="mt-3 text-xs">
-                                        <i class="fa-regular fa-building"></i>
-                                        Remoto</p>
-                                    <p class="text-xs"> 
-                                        <i class="fa-solid fa-hammer-crash"></i>
-                                        Con experiencia</p>
-                                </article>
-                                <article class="w-2/4 flex justify-end">
-                                    <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Ver detalle</button>
-                                </article>
-                            </article>
-                        </article>
-                    </article>
-                </section>
-    
-                <section class="my-3 mx-5">
-                    <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
-                        <article>
-                            <figure>
-                                <img class="object-cover w-full h-48" src="https://images.pexels.com/photos/4219654/pexels-photo-4219654.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="mujercon sweter tejido">
-                            </figure>
-                        </article>
-                        <article class="m-2 gap-1 ">
-                            <h5 class="mb-3">TEJIDOS ANA</h5>
-                            <h3 >Especialista en crochet</h3>
-                            <p class="text-xs">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Faucibus turpis in eu mi bibendum neque.</p>
-                            <article class="w-full flex flex-row justify between">
-                                <article class="w-2/4">
-                                    <p class="mt-3 text-xs">
-                                        <i class="fa-regular fa-building"></i>
-                                        Remoto</p>
-                                    <p class="text-xs"> 
-                                        <i class="fa-solid fa-hammer-crash"></i>
-                                        Con experiencia</p>
-                                </article>
-                                <article class="w-2/4 flex justify-end">
-                                    <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Ver detalle</button>
-                                </article>
-                            </article>
-                        </article>
-                    </article>
-                </section>
-    
+                    </section> 
+        
+                    
+                </section>-->
+                
+                <!-- Spinner -->
+                
             </section>
+                
+            <section class="w-screen h-screen hidden" id="spinner-cont">
+                <section class="bg-[#DAE3E5]  flex justify-center aling-center">
+                    
+                        <article class="w-14 h-14 m-10">
+                            <img src="img/ball-of-yarn-297769.svg" alt="ovillo de lana">
+                        </article>                
+                    
+                </section>
+            </section>
+
         </section>
+
+        
 
         <!-- CARD DETAIL -->
 
@@ -274,48 +211,66 @@
 
         <!-- ADD JOBS -->
 
-        <section class="hidden" id="add-job-form">
-            <section class="bg-white w-11/12 max-w-3xl mx-auto my-3.5 shadow-md shadow-blue-950 rounded-md">
-                <form action="" class="m-3">
+        <section class="w-full hidden" id="add-job-form">
+            <section class="bg-white w-11/12 max-w-3xl mx-auto my-3.5 shadow-md shadow-blue-950 rounded-md lg:w-full">
+                <form action="" class="m-3" id="form">
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">EMPRESA</label>
-                        <input type="text" name="" id="" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md" placeholder="Nombre">
-                        <textarea name="" id="" class="bg-[#DAE3E5] rounded-md" placeholder="Descripción"></textarea>
+                        <input type="text" name="" id="company-name" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md" placeholder="Nombre">
+                        <textarea name="" id="company-description" class="bg-[#DAE3E5] rounded-md" placeholder="Descripción"></textarea>
                     </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">PUESTO</label>
-                        <input type="text" name="" class="bg-[#DAE3E5] py-1.5 rounded-md" id="">
+                        <input type="text" name="" class="bg-[#DAE3E5] py-1.5 rounded-md" id="job-name">
                     </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">Imagen</label>
-                        <input type="url" name="" class="bg-[#DAE3E5] py-1.5 rounded-md" id="" placeholder="Url">
+                        <input type="url" name="" class="bg-[#DAE3E5] py-1.5 rounded-md" id="url-image" placeholder="Url">
                     </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">Descripción</label>
-                        <textarea name="" id="" class="bg-[#DAE3E5] rounded-md"></textarea>
+                        <textarea name="" id="description-job" class="bg-[#DAE3E5] rounded-md"></textarea>
                     </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">Características</label>
-                        <input type="text" name="" id="" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md" placeholder="categoria" >
-                        <input type="text" name="" id="" class="bg-[#DAE3E5] py-1.5 rounded-md" placeholder="Locación" >
+                        <select name="" id="category-select" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md">
+                            <option value="Crochet">Crochet</option>
+                            <option value="Tricot">Tricot</option>
+                            <option value="Telar">Telar</option>
+                            <option value="Macrame">Macramé</option>
+                            <option value="Tejido a maquina">Tejido a máquina</option>
+                        </select>
+                        <select name="" id="location-mode" class="bg-[#DAE3E5] py-1.5 rounded-md">
+                            <option value="Remoto">Remoto</option>
+                            <option value="Presencial">Presencial</option>
+                        </select>
+                        <input type="text" name="" id="location-address" class="bg-[#DAE3E5] mb-3 mt-3 py-1.5 rounded-md" placeholder="Dirección presencial" >
                     </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">Experiencia</label>
-                        <select name="" id="" class="bg-[#DAE3E5] py-1.5 rounded-md">
-                            <option value="">Con experiencia</option>
-                            <option value="">Sin experiencia</option>
+                        <select name="" id="experience" class="bg-[#DAE3E5] py-1.5 rounded-md">
+                            <option value="true">Con experiencia</option>
+                            <option value="false">Sin experiencia</option>
                         </select>
                     </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">Remuneracíon</label>
-                        <input type="number" name="" id="" class="bg-[#DAE3E5] py-1.5 rounded-md">
+                        <input type="number" name="" id="salary" class="bg-[#DAE3E5] py-1.5 rounded-md">
                     </article>
-                    <article class="flex flex-col">
+                    <!-- <article class="flex flex-col">
                         <label for="" class="my-1.5">Técnicas solicitadas</label>
                         <input type="text" name="" id="" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md">
+                    </article> -->
+                    <article class="flex flex-col">
+                        <label for="" class="my-1.5">Beneficios</label>
+                        <input type="text" name="" id="health_ensurance" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md" placeholder="Obra social">
+                        <select name="" id="raw-material" class="bg-[#DAE3E5] py-1.5 rounded-md">
+                            <option value="true">Materia prima incluida</option>
+                            <option value="false">Materia prima no incluida</option>
+                        </select>
                     </article>
                     <article>
-                        <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white">Agregar</button>
+                        <button type="submit" class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" id="add-job-btn">Agregar</button>
                         <button class="text-white m-4 p-2 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#507DBC] hover:shadow-md hover:shadow-[#08101F] hidden">Editar</button>
                     </article>
                 </form>
