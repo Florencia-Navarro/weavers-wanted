@@ -11,6 +11,17 @@ const getJobs = () => {
     .then(jobs => renderJobs(jobs))
 }
 
+const getJob = (id) => {
+    fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs/${id}`)
+    .then(res => res.json())
+    .then(job => {
+        renderJobDetail(job)
+        
+    })
+}
+
+
+
 const addJob = () => {
     fetch("https://649602f8b08e17c91792f028.mockapi.io/jobs", {
         method: "POST",     
@@ -32,14 +43,17 @@ const saveJobData = () => {
         hasExperience: $("#experience").value,
         companyName: $("#company-name").value,
         companyDescription: $("#company-description").value,
-        benefits: {
-            health_ensurance: $("#health_ensurance").value,
-            material_paid: $("#raw-material").value
-        },
         salary: $("#salary").value,
-        basicTechniques: ["crochet", "tricot", "macrame", "telar"]
+        basicTechniques: ["crochet", "tricot", "macrame", "telar"],
+        locationAddress: $("#location-address").value,
+        benefits: {
+            obra_social: $("#health_ensurance").value,
+            materiales_incluidos: $("#raw-material").value ? true : false
+        }
     }
 }
+
+
 
 const renderJobs = (jobs) => {
     showElement("#spinner-cont")
@@ -72,7 +86,7 @@ const renderJobs = (jobs) => {
                                             ${hasExperience ? "Con experiencia" : "Sin experiencia"}</p>
                                     </article>
                                     <article class="w-2/4 flex justify-end">
-                                        <button class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" data-id=""${id}>Ver detalle</button>
+                                        <button class="btn-edit m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" data-id="${id}" onclick="getJob('${id}')">Ver detalle</button>
                                     </article>
                                 </article>
                             </article>
@@ -86,6 +100,56 @@ const renderJobs = (jobs) => {
         
         }, 2000)
     }
+}
+
+const renderJobDetail = ({ image, jobName, description, companyName, companyDescription, location, hasExperience, benefits: {obra_social, materiales_incluidos } ,id }) => {
+    
+    hideElement("#cards-container")
+    showElement("#card-detail-cont")
+    cleanContainer("#cards-container")
+    
+        $("#card-detail-cont").innerHTML += `
+            <section class="my-3 mx-5">
+                <article class="bg-white w-80 h-96 rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950"
+                style="background-image: url('${image}');"
+                >
+                    <article class="w-full h-full bg-gradient-to-r from-[#08101F] from-10% to-transparent flex justify-end items-end relative">
+                        <article class="bg-white w-11/12 pl-3.5 absolute -bottom-4 -right-4">
+                            <h5 class="mb-2">${companyName}</h5>
+                            <p class="text-xs">${companyDescription}</p>
+                            <h3>Buscamos: ${jobName}</h3>
+                            <p class="text-xs">${description}</p>
+                            
+                            <article class="flex justify-around">
+                                <article class="w-full pb-1 flex flex-row justify-between">
+                                    <article class="m-1 border-2 border-slate-100 rounded-md">
+                                        <p class="mt-3 text-xs">
+                                            <i class="fa-regular fa-building"></i>
+                                            ${location}</p>
+                                        <p class="text-xs"> 
+                                            <i class="fa-solid fa-hammer"></i>
+                                            ${hasExperience ? "Con experiencia" : "Sin experiencia"}</p>
+                                    </article>
+                                    <article class="m-1 border-2 border-slate-100 rounded-md">
+                                        <p class="mt-3 text-xs ">
+                                            Ofrecemos: 
+                                            ${obra_social}. ${materiales_incluidos ? "Materiales incluidos" : ""} </p>
+                                        
+                                    </article> 
+                                    <article class=" flex justify-end">
+                                        <button class="btn-edit m-1 px-1 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" data-id="${id}">Editar</button>
+                                        <button class="btn-delete text-white m-1 px-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] hover:text-white" data-id="${id}">Eliminar</button>
+                                    </article>
+                                </article>
+                            </article>
+                        </article>
+                    </article>
+                </article>
+            </section>
+        `
+    
+
+    
 }
 
 const initializeApp = () => {
@@ -102,6 +166,7 @@ const initializeApp = () => {
     $("#add-job-form-show").addEventListener("click", () => {
         hideElement("#filters-container")
         hideElement("#cards-container")
+        hideElement("#card-detail-cont")
         showElement("#add-job-form")
     })
 
@@ -109,18 +174,21 @@ const initializeApp = () => {
         hideElement("#filters-container")
         hideElement("#cards-container")
         hideElement("#sidebar-menu")
+        hideElement("#card-detail-cont")
+
         showElement("#add-job-form")
     })
 
-    
-}
     $("#form").addEventListener("submit", (e) => {
         e.preventDefault()
         addJob()
         $("#form").reset()
     })
+    
+}
 
 window.addEventListener("load", () => {
     initializeApp()
     getJobs()
+    
 })
