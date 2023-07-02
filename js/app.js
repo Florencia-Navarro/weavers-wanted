@@ -4,6 +4,8 @@ const cleanContainer = (selector) => $(selector).innerHTML = ''
 const showElement = (selector) => $(selector).classList.remove("hidden")
 const hideElement = (selector) => $(selector).classList.add("hidden")
 
+let isSubmit = false
+
 
 const getJobs = () => {
     fetch("https://649602f8b08e17c91792f028.mockapi.io/jobs")
@@ -11,12 +13,12 @@ const getJobs = () => {
     .then(jobs => renderJobs(jobs))
 }
 
-const getJob = (id) => {
-    fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs/${id}`)
+const getJob = (jobId) => {
+    fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs/${jobId}`)
     .then(res => res.json())
     .then(job => {
         renderJobDetail(job)
-        
+        populateForm(job)
     })
 }
 
@@ -30,6 +32,21 @@ const addJob = () => {
         },
         body: JSON.stringify(saveJobData())
     })
+}
+const editJob = (jobId) => {
+    fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs/${jobId}`, {
+        method: "PUT",     
+        headers: {
+            'Content-Type': 'Application/json'
+        },
+        body: JSON.stringify(saveJobData())
+    }).finally(() => window.location.reload())
+}
+
+const deleteJob = (jobId) => {
+    fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs/${jobId}`, {
+        method: "DELETE"
+    }).finally(() => window.location.reload())
 }
 
 const saveJobData = () => {
@@ -53,7 +70,21 @@ const saveJobData = () => {
     }
 }
 
-
+const populateForm = ( job) => {
+    $("#job-name").value = job.jobName 
+    $("#url-image").value = job.image
+    $("#description-job").value = job.description
+    $("#location-mode").value = job.location
+    $("#location-address").value = job.locationAddress
+    $("#category-select").value = job.category
+    $("#experience").value = job.hasExperience
+    $("#company-name").value = job.companyName
+    $("#company-description").value = job.companyDescription
+    $("#salary").value = job.salary
+    $("#location-address").value = job.locationAddress
+    $("#health_ensurance").value = job.benefits.obra_social
+    $("#raw-material").value = job.benefits.materiales_incluidos
+}
 
 const renderJobs = (jobs) => {
     showElement("#spinner-cont")
@@ -147,7 +178,26 @@ const renderJobDetail = ({ image, jobName, description, companyName, companyDesc
                 </article>
             </section>
         `
-    
+        for (const btn of $$(".btn-edit")) {
+            btn.addEventListener("click", () => {
+                hideElement("#card-detail-cont")
+                hideElement("#add-job-btn")
+                showElement("#add-job-form")
+                showElement("#edit-form-btn")
+                const jobId = btn.getAttribute("data-id")
+                $("#edit-form-btn").setAttribute("data-id", jobId)
+                isSubmit = false
+            })
+        } 
+        
+        for (const btn of $$(".btn-delete")){
+            btn.addEventListener("click", () => {
+                showElement("#modal-confirm-delete")
+                $("#delete-company-job").innerHTML = companyName
+                const jobId = btn.getAttribute("data-id")
+                $("#modal-btn-delete").setAttribute("data-id", jobId)
+            })
+        }
 
     
 }
@@ -168,6 +218,7 @@ const initializeApp = () => {
         hideElement("#cards-container")
         hideElement("#card-detail-cont")
         showElement("#add-job-form")
+        isSubmit = true
     })
 
     $("#add-form-side-btn").addEventListener("click", () => {
@@ -181,10 +232,24 @@ const initializeApp = () => {
 
     $("#form").addEventListener("submit", (e) => {
         e.preventDefault()
-        addJob()
+        if(isSubmit){
+            addJob()
+        } else {
+            const jobId = $("#edit-form-btn").getAttribute("data-id")
+            editJob(jobId)
+            hideElement("#add-job-form")
+        }
         $("#form").reset()
     })
-    
+
+    $("#modal-btn-delete").addEventListener("click", () => {
+        const jobId = $("#modal-btn-delete").getAttribute("data-id")
+        deleteJob(jobId)
+    })
+
+    $("#modal-cancel-btn").addEventListener("click", () => {
+        hideElement("#modal-confirm-delete")
+    })
 }
 
 window.addEventListener("load", () => {
