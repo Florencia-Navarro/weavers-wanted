@@ -218,6 +218,59 @@ const initializeApp = () => {
 
     $("#close-filter-menu").addEventListener("click", () => {
         hideElement("#filters-header")
+
+    })
+
+    $(".category-filter-show").addEventListener("click", () => {
+        showElement("#category-filter")
+        showElement("#search-btn")
+        hideElement("#filters-header")
+        hideElement("#experience-filter")
+        hideElement("#location-filter")
+
+    })
+
+    $(".category-filter-show2").addEventListener("click", () => {
+        showElement("#category-filter")
+        showElement("#search-btn")
+        hideElement("#sidebar-menu")
+        hideElement("#experience-filter")
+        hideElement("#location-filter")
+
+    })
+
+    $(".experience-filter-show").addEventListener("click", () => {
+        showElement("#experience-filter")
+        showElement("#search-btn")
+        hideElement("#filters-header")
+        hideElement("#category-filter")
+        hideElement("#location-filter")
+
+    })
+
+    $(".experience-filter-show2").addEventListener("click", () => {
+        showElement("#experience-filter")
+        showElement("#search-btn")
+        hideElement("#sidebar-menu")
+        hideElement("#category-filter")
+        hideElement("#location-filter")
+
+    })
+
+    $(".location-filter-show").addEventListener("click", ()=> {
+        showElement("#location-filter")
+        showElement("#search-btn")
+        hideElement("#filters-header")
+        hideElement("#category-filter")
+        hideElement("#experience-filter")
+    })
+
+    $(".location-filter-show2").addEventListener("click", ()=> {
+        showElement("#location-filter")
+        showElement("#search-btn")
+        hideElement("#sidebar-menu")
+        hideElement("#category-filter")
+        hideElement("#experience-filter")
     })
 
     $("#add-job-form-show").addEventListener("click", () => {
