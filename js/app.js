@@ -212,6 +212,13 @@ const initializeApp = () => {
         hideElement("#sidebar-menu")
     })
 
+    $("#filters-header-btn").addEventListener("click" , () => {
+        showElement("#filters-header")
+    })
+
+    $("#close-filter-menu").addEventListener("click", () => {
+        hideElement("#filters-header")
+    })
 
     $("#add-job-form-show").addEventListener("click", () => {
         hideElement("#filters-container")
