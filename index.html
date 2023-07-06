@@ -48,15 +48,15 @@
                 </article>
                 <article class="category-filter-show my-3 py-3 cursor-pointer hover:bg-slate-200">
                     <i class="fa-regular fa-hand-point-right"></i>
-                    Categorías
+                    <a class="select-filter" name="category">Categorías</a>
                 </article>
                 <article class="experience-filter-show my-3 py-3 cursor-pointer hover:bg-slate-200">
                     <i class="fa-regular fa-hand-point-right"></i>
-                    Experiencia
+                    <a class="select-filter" name="has-experience">Experiencia</a>
                 </article>
                 <article class="location-filter-show my-3 py-3 cursor-pointer hover:bg-slate-200">
                     <i class="fa-regular fa-hand-point-right"></i>
-                    Locación
+                    <a class="select-filter" name="location">Locación</a>
                 </article>
             </section>
         </section>
@@ -82,13 +82,19 @@
                             <i class="fa-solid fa-filter"></i>
                             FILTRAR POR
                             <article class="ml-5 p-1 flex flex-col" >
-                                <a class="category-filter-show2 p-3 cursor-pointer hover:bg-slate-200">
+                                <a class="select-filter 
+                                  p-3 cursor-pointer hover:bg-slate-200" name="category"
+                                  id="category-filter-show2"
+                                >
                                     <i class="fa-regular fa-hand-point-right"></i>
                                     Categorías</a>
-                                <a class="experience-filter-show2 p-3 cursor-pointer hover:bg-slate-200">
+                                <a class="select-filter 
+                                  p-3 cursor-pointer hover:bg-slate-200" name="has-experience" id="experience-filter-show2"
+                                 >
                                     <i class="fa-regular fa-hand-point-right"></i>
                                     Experiencia</a>
-                                <a class="location-filter-show2 p-3 cursor-pointer hover:bg-slate-200">
+                                <a class="select-filter 
+                                 location-filter-show2 p-3 cursor-pointer hover:bg-slate-200" name="location" id="location-filter-show2">
                                     <i class="fa-regular fa-hand-point-right"></i>
                                     Locación</a>
                             </article>
@@ -98,58 +104,73 @@
             </section>
         </section>
 
-
-
     </header>
 
-    
-
     <main>
-        
-        <section class="lg:flex lg:flex-row" >
+
+        <section class="" >
 
             <!-- FILTERS -->
-
-            <section class="flex flex-col sm:flex-row lg:flex-col lg:m-10" >
-                <section class=" m-3 p-2 flex flex-row justify-around lg:flex-col">
-                    <article class="mx-1 flex flex-col hidden" id="category-filter">
-                        <label for="" class="my-2">Categoria</label>
-                        <select name="" id="" class="rounded-md my-3">
-                            <option value="">Todos</option>
-                            <option value="">Crochet</option>
-                            <option value="">Tricot</option>
-                            <option value="">Macrame</option>
-                            <option value="">Telar</option>
-                            <option value="">Tejido en maquina</option>
-                        </select>
-                    </article>
-                    <article class="mx-1 flex flex-col hidden" id="experience-filter">
-                        <label for="" class="my-2">Experiencia</label>
-                        <select name="" id="" class="rounded-md my-3">
-                            <option value="">Todos</option>
-                            <option value="">Posee</option>
-                            <option value="">No posee</option>
-                        </select>
-                    </article>
-                    <article class="mx-1 flex flex-col hidden" id="location-filter">
-                        <label for="" class="my-2">Locacion</label>
-                        <select name="" id="" class="rounded-md my-3">
-                            <option value="">Todos</option>
-                            <option value="">Remoto</option>
-                            <option value="">Presencial</option>
-                        </select>
-
-                    </article>
+            
+            <section class="lg:h-full lg:w-56 hidden" id="filters-cont">
+                <section class="flex flex-col  lg:flex-row lg:m-10 " >
+                    <section class=" m-2 p-2 flex flex-col justify-around lg:justify-start lg:mt-8 lg: ml-8 lg:fixed lg:left-0 lg:w-48 lg:h-64 lg:border-2 lg:border-blue-950 lg:rounded-md lg:bg-[#DAE3E5]  lg:shadow-md lg:shadow-[#08101F] " >
+                        <article class="mx-2 flex flex-col hidden" id="category-filter">
+                            <article>
+                                <h3 class="text-blue-950 my-4 mx-1">FILTRAR POR CATEGORIAS</h3>
+                            </article>
+                            <article class="flex flex-row lg:flex-col">
+                                <article>
+                                    <button class="filter-btn-category text-white text-xs my-1 mx-1 px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] md:mx-2 lg:mx-0" name="">Todos</button>
+                                    <button class="filter-btn-category text-white text-xs my-1 mx-1 px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] md:mx-2 lg:mx-0" name="crochet">Crochet</button>
+                                </article>
+                                <article>
+                                    <button class="filter-btn-category text-white text-xs my-1 mx-1 px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] md:mx-2 lg:mx-0"  name="tricot">Tricot</button>
+                                    <button class="filter-btn-category text-white text-xs my-1 mx-1 px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] md:mx-2 lg:mx-0" name="macrame">Macramé</button>
+                                </article>
+                                <article>
+                                    <button class="filter-btn-category text-white text-xs my-1 mx-1 px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] md:mx-2 lg:mx-0" name="telar">Telar</button>
+                                    <button class="filter-btn-category text-white text-xs my-1 mx-1 px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] md:mx-2 lg:mx-0" name="maquina">Tejido a máquina</button>
+                                </article>
+                            </article>
+                                
+                        </article>
+    
+                        <article class="mx-1 flex flex-col hidden" id="experience-filter">
+                            <article>
+                                <h3 class="text-blue-950 my-4 mx-1">FILTRAR POR EXPERIENCIA</h3>
+                            </article> 
+                            <article class="flex flex-row lg:flex-col">
+                                
+                                    <button class="filter-btn-experience text-white text-xs m-1  px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] lg:w-24" name="">Todos</button>
+                                    <button class="filter-btn-experience text-white text-xs m-1  px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] lg:w-24" name="true">Con experiencia</button>
+                            
+                                    <button class="filter-btn-experience text-white text-xs m-1  px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] lg:w-24" name="false">Sin experiencia</button>
+                               
+                            </article>   
+                        </article>
+    
+    
+                        <article class="mx-1 flex flex-col hidden" id="location-filter">
+                            <article>
+                                <h3 class="text-blue-950 my-4 mx-1">FILTRAR POR LOCACIÓN</h3>
+                            </article>
+                            <article class="flex flex-row lg:flex-col">
+                                
+                                    <button class="filter-btn-location text-white text-xs m-1  px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] lg:w-24" name="">Todos</button>
+                                    <button class="filter-btn-location text-white text-xs m-1  px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] lg:w-24" name="remoto">Remoto</button>
+                                    <button class="filter-btn-location text-white text-xs m-1  px-3 py-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] lg:w-24" name="presencial">Presencial</button>
+                                
+                            </article>   
+                        </article>
+                    </section>       
                 </section>
-                <article class="flex sm:items-center">
-                    <button class="ml-5 mr-2 p-2 bg-[#E1A41F] text-xs rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white sm:h-12 sm:px-3 hidden" id="search-btn">Buscar</button>
-                    <button class="ml-2 mr-5 p-2 bg-[#E1A41F] text-xs rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white sm:h-12 sm:px-3 hidden">Reestablecer filtros</button>
-                </article>
+
             </section>
     
             <!------------------ CARDS- ------------------>
 
-            <section>
+            <section class="" id="main-cont-cards">
                 <section class="flex flex-row overflow-x-scroll lg:flex-wrap lg:justify-center lg:m-5 lg:overflow-x-hidden" id="cards-container">
                      <!--<section class="my-3 mx-5">
                         <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
@@ -197,8 +218,6 @@
             </section>
 
         </section>
-
-        
 
         <!-- CARD DETAIL -->
 
@@ -312,16 +331,19 @@
                     <article>
                         <button type="submit" class="m-4 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" id="add-job-btn">Agregar</button>
                         <button class="text-white m-4 p-2 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#507DBC] hover:shadow-md hover:shadow-[#08101F] hidden" id="edit-form-btn">Editar</button>
+                        <button class="text-white m-4 p-2 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#507DBC] hover:shadow-md hover:shadow-[#08101F]" id="cancel-form-btn">Cancelar</button>
                     </article>
                 </form>
             </section>
         </section>
 
+         
+
     </main>
 
     <!-- FOOTER -->
 
-    <footer class="bg-gradient-to-r from-[#08101F] to-[#507DBC] shadow-lg shadow-blue-950 w-full">
+    <footer class="bg-gradient-to-r from-[#08101F] to-[#507DBC] shadow-lg shadow-blue-950 w-full ">
         <section>
             <ul class="flex justify-center">
                 <li>
