@@ -3,12 +3,13 @@ const $$ = (selector) => document.querySelectorAll(selector)
 const cleanContainer = (selector) => $(selector).innerHTML = '' 
 const showElement = (selector) => $(selector).classList.remove("hidden")
 const hideElement = (selector) => $(selector).classList.add("hidden")
+const addMarginL = (selector) => $(selector).classList.add("lg:ml-32")
 
 let isSubmit = false
 
 
-const getJobs = () => {
-    fetch("https://649602f8b08e17c91792f028.mockapi.io/jobs")
+const getJobs = (filterName, filterValue) => {
+    fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs${filterName && filterValue ? `?${filterName}=${filterValue}` : ""}`)
     .then(res => res.json())
     .then(jobs => renderJobs(jobs))
 }
@@ -125,6 +126,13 @@ const renderJobs = (jobs) => {
                             </section>
                             
                             `
+
+            for (const btn of $$(".btn-edit")){
+                btn.addEventListener("click", () => {
+                    hideElement("#filters-cont")
+                })
+            }
+
             }
                         
             hideElement("#spinner-cont")
@@ -202,7 +210,77 @@ const renderJobDetail = ({ image, jobName, description, companyName, companyDesc
     
 }
 
+
+const filterByCategory = () => {
+    for (const btn of $$(".filter-btn-category")){
+        
+        btn.addEventListener("click", (e) => {
+            console.log(e.target)
+            filterValue = e.target.getAttribute("name")
+            getJobs("category", filterValue)
+           
+        })
+    }
+}
+
+const filterByExperience = () => {
+    for (const btn of $$(".filter-btn-experience")){
+        
+        btn.addEventListener("click", (e) => {
+            console.log(e.target)
+            filterValue = e.target.getAttribute("name")
+            getJobs("hasExperience", filterValue)
+            
+        })
+    }
+}
+
+const filterByLocation = () => {
+    for (const btn of $$(".filter-btn-location")){
+        
+        btn.addEventListener("click", (e) => {
+            console.log(e.target)
+            filterValue = e.target.getAttribute("name")
+            getJobs("location", filterValue)
+            
+        })
+    }
+}
+
+/* const filterJobs = () => {
+    let filterName = ""
+    let filterValue = ""
+
+    console.log(filterName)
+  
+    for (const link of $$(".select-filter")) {
+      link.addEventListener("click", (e) => {
+        filterName = e.target.getAttribute("name").toString()
+        console.log(filterName)
+       
+
+      })
+    }
+  
+    for (const btn of $$(".filter-option")) {
+      btn.addEventListener("click", (e) => {
+        filterValue = e.target.getAttribute("name").toString()
+        console.log(filterValue)
+        getJobs(filterName, filterValue) 
+    })
+    }
+    console.log(filterName)
+
+  }  */
+  
+
+
 const initializeApp = () => {
+
+    filterByCategory()
+    filterByExperience()
+    filterByLocation()
+
 
     $("#sidebar-open").addEventListener("click", () => {
         showElement("#sidebar-menu")
@@ -212,9 +290,84 @@ const initializeApp = () => {
         hideElement("#sidebar-menu")
     })
 
+    $("#filters-header-btn").addEventListener("click" , () => {
+        showElement("#filters-header")
+    })
+
+    $("#close-filter-menu").addEventListener("click", () => {
+        hideElement("#filters-header")
+
+    })
+
+    $(".category-filter-show").addEventListener("click", () => {
+        showElement("#filters-cont")
+        showElement("#category-filter")
+        hideElement("#filters-header")
+        hideElement("#experience-filter")
+        hideElement("#location-filter")
+        addMarginL("#main-cont-cards")
+
+    })
+
+    $("#category-filter-show2").addEventListener("click", () => {
+        showElement("#filters-cont")
+        showElement("#category-filter")
+        showElement("#cards-container")
+        hideElement("#sidebar-menu")
+        hideElement("#filters-header")
+        hideElement("#experience-filter")
+        hideElement("#location-filter")
+        hideElement("#card-detail-cont")
+
+    })
+
+    $(".experience-filter-show").addEventListener("click", () => {
+        showElement("#filters-cont")
+        showElement("#experience-filter")
+        hideElement("#filters-header")
+        hideElement("#category-filter")
+        hideElement("#location-filter")
+        addMarginL("#main-cont-cards")
+
+    })
+
+    $("#experience-filter-show2").addEventListener("click", () => {
+        showElement("#filters-cont")
+        showElement("#experience-filter")
+        showElement("#cards-container")
+        hideElement("#sidebar-menu")
+        hideElement("#filters-header")
+        hideElement("#category-filter")
+        hideElement("#location-filter")
+        hideElement("#card-detail-cont")
+
+
+    })
+
+    $(".location-filter-show").addEventListener("click", ()=> {
+        showElement("#filters-cont")
+        showElement("#location-filter")
+        hideElement("#filters-header")
+        hideElement("#category-filter")
+        hideElement("#experience-filter")
+        addMarginL("#main-cont-cards")
+    })
+
+    $("#location-filter-show2").addEventListener("click", ()=> {
+        showElement("#location-filter")
+        showElement("#filters-cont")
+        showElement("#cards-container")
+        hideElement("#sidebar-menu")
+        hideElement("#filters-header")
+        hideElement("#category-filter")
+        hideElement("#experience-filter")
+        hideElement("#card-detail-cont")
+
+    })
+
 
     $("#add-job-form-show").addEventListener("click", () => {
-        hideElement("#filters-container")
+        hideElement("#filters-cont")
         hideElement("#cards-container")
         hideElement("#card-detail-cont")
         showElement("#add-job-form")
@@ -222,14 +375,17 @@ const initializeApp = () => {
     })
 
     $("#add-form-side-btn").addEventListener("click", () => {
-        hideElement("#filters-container")
+        hideElement("#filters-cont")
         hideElement("#cards-container")
         hideElement("#sidebar-menu")
         hideElement("#card-detail-cont")
-
         showElement("#add-job-form")
     })
 
+    /* $("#search-btn").addEventListener("click", () => {
+        filterByCategory()
+    })
+ */
     $("#form").addEventListener("submit", (e) => {
         e.preventDefault()
         if(isSubmit){
@@ -250,6 +406,12 @@ const initializeApp = () => {
     $("#modal-cancel-btn").addEventListener("click", () => {
         hideElement("#modal-confirm-delete")
     })
+
+    $("#cancel-form-btn").addEventListener("click", () => {
+        hideElement("#add-job-form")
+        showElement("#cards-container")
+    })
+
 }
 
 window.addEventListener("load", () => {
