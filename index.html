@@ -207,13 +207,34 @@
                 
             </section>
                 
-            <section class="w-screen h-screen hidden" id="spinner-cont">
-                <section class="bg-[#DAE3E5]  flex justify-center aling-center">
-                    
-                        <article class="w-14 h-14 m-10">
-                            <img src="img/ball-of-yarn-297769.svg" alt="ovillo de lana">
-                        </article>                
-                    
+            <section class="bg-[#DAE3E5] w-screen h-screen flex justify-center" id="spinner-cont">
+                <section class="w-72 h-44 mt-20 relative">
+                    <section class="  flex justify-center aling-center">
+                        
+                            <article class="yarn w-12 h-12 m-10">
+                                <img src="img/ball.png" alt="ovillo de lana">
+                            </article>                
+                        
+                    </section>
+                    <section class="w-40 h-40 absolute top-0 left-0" >
+                        <img src="img/cat-294461.svg" alt="sombra de gato">
+                    </section>
+                    <style>
+                        .yarn{
+                            animation: spin 1s linear  infinite;
+                        }
+
+                        @keyframes spin {
+                            0% {
+                            transform: rotate(0deg);
+                            }
+                        
+                            100% {
+                            transform: rotate(360deg);
+                            }
+                        }
+                    </style>
+    
                 </section>
             </section>
 
