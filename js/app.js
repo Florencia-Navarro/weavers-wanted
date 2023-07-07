@@ -11,8 +11,15 @@ let isSubmit = false
 const getJobs = (filterName, filterValue) => {
     fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs${filterName && filterValue ? `?${filterName}=${filterValue}` : ""}`)
     .then(res => res.json())
-    .then(jobs => renderJobs(jobs))
-}
+    .then(jobs => {
+        if (jobs.length > 0) {
+            renderJobs(jobs)
+          } else {
+            cleanContainer("#cards-container")
+            showElement("#no-results-message")
+          }
+    } 
+)}
 
 const getJob = (jobId) => {
     fetch(`https://649602f8b08e17c91792f028.mockapi.io/jobs/${jobId}`)
@@ -50,6 +57,16 @@ const deleteJob = (jobId) => {
     }).finally(() => window.location.reload())
 }
 
+const saveCheckboxData = () => {
+    let checkboxesSelected = []
+    for (const checkbox of $$(".requested-techniques")){
+        if (checkbox.checked){
+            checkboxesSelected.push(checkbox.value)
+        }
+    }
+    console.log(checkboxesSelected)
+}
+
 const saveJobData = () => {
     return{
         jobName: $("#job-name").value,
@@ -62,7 +79,7 @@ const saveJobData = () => {
         companyName: $("#company-name").value,
         companyDescription: $("#company-description").value,
         salary: $("#salary").value,
-        basicTechniques: ["crochet", "tricot", "macrame", "telar"],
+        basicTechniques: saveCheckboxData(),
         locationAddress: $("#location-address").value,
         benefits: {
             obra_social: $("#health_ensurance").value,
@@ -370,6 +387,7 @@ const initializeApp = () => {
         hideElement("#filters-cont")
         hideElement("#cards-container")
         hideElement("#card-detail-cont")
+        hideElement("#filters-header")
         showElement("#add-job-form")
         isSubmit = true
     })

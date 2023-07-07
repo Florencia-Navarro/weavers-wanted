@@ -337,10 +337,32 @@
                         <label for="" class="my-1.5">Remuneracíon</label>
                         <input type="number" name="" id="salary" class="bg-[#DAE3E5] py-1.5 rounded-md">
                     </article>
-                    <!-- <article class="flex flex-col">
+                    <article class="">
                         <label for="" class="my-1.5">Técnicas solicitadas</label>
-                        <input type="text" name="" id="" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md">
-                    </article> -->
+                        <article class="bg-[#DAE3E5]  py-1.5 rounded-md flex flex-wrap">
+                            <article class="mx-auto">
+                                <input type="checkbox" class="requested-techniques" value="crochet">
+                                <label for="crochet">Crochet</label>
+                            </article>
+                            <article class="mx-auto">
+                                <input type="checkbox" class="requested-techniques"  value="tricot">
+                                <label for="tricot">Tricot</label>
+                            </article>
+                            <article class="mx-auto">
+                                <input type="checkbox" class="requested-techniques"  value="macrame">
+                                <label for="macrame">Macramé</label>
+                            </article>
+                            <article class="mx-auto">
+                                <input type="checkbox" class="requested-techniques"  value="telar">
+                                <label for="telar">Telar</label>
+                            </article>
+                            <article class="mx-auto">
+                                <input type="checkbox" class="requested-techniques"  value="tejido a maquina">
+                                <label for="tejido a maquina">Tejido a máquina</label>
+                            </article>
+
+                        </article>
+                    </article>
                     <article class="flex flex-col">
                         <label for="" class="my-1.5">Beneficios</label>
                         <input type="text" name="" id="health_ensurance" class="bg-[#DAE3E5] mb-3 py-1.5 rounded-md" placeholder="Obra social">
@@ -358,7 +380,15 @@
             </section>
         </section>
 
-         
+        <!-- NO RESULTS MESSAGE  -->
+
+        <section class="w-screen h-screen flex justify-center aling-center hidden" id="no-results-message">
+            <article>
+                <img class="w-44 mx-auto" src="img/oveja-negra.png" alt="oveja negra">
+                <h2 class="font-bold">NO SE ENCONTRARON RESULTADOS</h2>
+            </article>
+            
+        </section> 
 
     </main>
 
