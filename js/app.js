@@ -296,6 +296,8 @@ const initializeApp = () => {
     $(".category-filter-show").addEventListener("click", () => {
         showElement("#filters-cont")
         showElement("#category-filter")
+        showElement("#cards-container")
+        hideElement("#add-job-form")
         hideElement("#filters-header")
         hideElement("#experience-filter")
         hideElement("#location-filter")
@@ -307,6 +309,7 @@ const initializeApp = () => {
         showElement("#filters-cont")
         showElement("#category-filter")
         showElement("#cards-container")
+        hideElement("#add-job-form")
         hideElement("#sidebar-menu")
         hideElement("#filters-header")
         hideElement("#experience-filter")
@@ -318,6 +321,8 @@ const initializeApp = () => {
     $(".experience-filter-show").addEventListener("click", () => {
         showElement("#filters-cont")
         showElement("#experience-filter")
+        showElement("#cards-container")
+        hideElement("#add-job-form")
         hideElement("#filters-header")
         hideElement("#category-filter")
         hideElement("#location-filter")
@@ -329,6 +334,7 @@ const initializeApp = () => {
         showElement("#filters-cont")
         showElement("#experience-filter")
         showElement("#cards-container")
+        hideElement("#add-job-form")
         hideElement("#sidebar-menu")
         hideElement("#filters-header")
         hideElement("#category-filter")
@@ -341,6 +347,8 @@ const initializeApp = () => {
     $(".location-filter-show").addEventListener("click", ()=> {
         showElement("#filters-cont")
         showElement("#location-filter")
+        showElement("#cards-container")
+        hideElement("#add-job-form")
         hideElement("#filters-header")
         hideElement("#category-filter")
         hideElement("#experience-filter")
@@ -351,6 +359,7 @@ const initializeApp = () => {
         showElement("#location-filter")
         showElement("#filters-cont")
         showElement("#cards-container")
+        hideElement("#add-job-form")
         hideElement("#sidebar-menu")
         hideElement("#filters-header")
         hideElement("#category-filter")
@@ -378,10 +387,6 @@ const initializeApp = () => {
         $("#form").reset()
     })
 
-    /* $("#search-btn").addEventListener("click", () => {
-        filterByCategory()
-    })
- */
 
     $("#form").addEventListener("submit", (e) => {
         e.preventDefault()
