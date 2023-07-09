@@ -64,7 +64,6 @@ const saveCheckboxData = () => {
             checkboxesSelected.push(checkbox.value)
         }
     }
-    console.log(checkboxesSelected)
 }
 
 const saveJobData = () => {
@@ -240,7 +239,6 @@ const filterByCategory = () => {
     for (const btn of $$(".filter-btn-category")){
         
         btn.addEventListener("click", (e) => {
-            console.log(e.target)
             filterValue = e.target.getAttribute("name")
             getJobs("category", filterValue)
            
@@ -252,7 +250,6 @@ const filterByExperience = () => {
     for (const btn of $$(".filter-btn-experience")){
         
         btn.addEventListener("click", (e) => {
-            console.log(e.target)
             filterValue = e.target.getAttribute("name")
             getJobs("hasExperience", filterValue)
             
@@ -264,40 +261,12 @@ const filterByLocation = () => {
     for (const btn of $$(".filter-btn-location")){
         
         btn.addEventListener("click", (e) => {
-            console.log(e.target)
             filterValue = e.target.getAttribute("name")
             getJobs("location", filterValue)
             
         })
     }
-}
-
-/* const filterJobs = () => {
-    let filterName = ""
-    let filterValue = ""
-
-    console.log(filterName)
-  
-    for (const link of $$(".select-filter")) {
-      link.addEventListener("click", (e) => {
-        filterName = e.target.getAttribute("name").toString()
-        console.log(filterName)
-       
-
-      })
-    }
-  
-    for (const btn of $$(".filter-option")) {
-      btn.addEventListener("click", (e) => {
-        filterValue = e.target.getAttribute("name").toString()
-        console.log(filterValue)
-        getJobs(filterName, filterValue) 
-    })
-    }
-    console.log(filterName)
-
-  }  */
-  
+} 
 
 
 const initializeApp = () => {
