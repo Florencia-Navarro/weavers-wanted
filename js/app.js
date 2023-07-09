@@ -104,6 +104,7 @@ const populateForm = ( job) => {
     $("#raw-material").value = job.benefits.materiales_incluidos
 }
 
+
 const renderJobs = (jobs) => {
     showElement("#spinner-cont")
     
@@ -115,17 +116,19 @@ const renderJobs = (jobs) => {
                 $("#cards-container").innerHTML += `
                 
                     <section class="my-3 mx-5">
-                        <article class="bg-white w-96 h-96 m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
+                        <article class="bg-white w-96 h-[450px] m-5 mx-auto rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950 flex flex-col">
                             <article>
                                 <figure>
                                 <img class="object-cover w-full h-48" src="${image}" alt="${jobName}">
                                 </figure>
                             </article>
-                            <article class="m-2 gap-1 ">
-                                <h5 class="mb-3">${companyName}</h5>
-                                <h3 >${jobName}</h3>
-                                <p class="text-xs">${companyDescription}</p>
-                                <article class="w-full flex flex-row justify between">
+                            <article class="m-2 gap-1 h-full flex flex-col justify-between ">
+                                <article>
+                                    <h5 class="mb-1">${companyName}</h5>
+                                    <h3 >${jobName}</h3>
+                                    <p class="text-xs">${companyDescription}</p>
+                                </article>
+                                <article class="w-full flex flex-row justify-between">
                                     <article class="w-2/4">
                                     <p class="mt-3 text-xs">
                                     <i class="fa-regular fa-building"></i>
@@ -158,49 +161,54 @@ const renderJobs = (jobs) => {
     }
 }
 
-const renderJobDetail = ({ image, jobName, description, companyName, companyDescription, location, hasExperience, benefits: {obra_social, materiales_incluidos } ,id }) => {
+const renderJobDetail = ({ image, jobName, description, companyName, location, hasExperience, benefits: {socialSecurity, materialsIncluded } ,id }) => {
     
     hideElement("#cards-container")
     showElement("#card-detail-cont")
     cleanContainer("#cards-container")
     
         $("#card-detail-cont").innerHTML += `
-            <section class="my-3 mx-5">
-                <article class="bg-white w-80 h-96 rounded-md border-l-8 border-blue-950 shadow-md shadow-blue-950"
-                style="background-image: url('${image}');"
-                >
-                    <article class="w-full h-full bg-gradient-to-r from-[#08101F] from-10% to-transparent flex justify-end items-end relative">
-                        <article class="bg-white w-11/12 pl-3.5 absolute -bottom-4 -right-4">
-                            <h5 class="mb-2">${companyName}</h5>
-                            <p class="text-xs">${companyDescription}</p>
-                            <h3>Buscamos: ${jobName}</h3>
-                            <p class="text-xs">${description}</p>
-                            
-                            <article class="flex justify-around">
-                                <article class="w-full pb-1 flex flex-row justify-between">
-                                    <article class="m-1 border-2 border-slate-100 rounded-md">
-                                        <p class="mt-3 text-xs">
-                                            <i class="fa-regular fa-building"></i>
-                                            ${location}</p>
-                                        <p class="text-xs"> 
-                                            <i class="fa-solid fa-hammer"></i>
-                                            ${hasExperience ? "Con experiencia" : "Sin experiencia"}</p>
-                                    </article>
-                                    <article class="m-1 border-2 border-slate-100 rounded-md">
-                                        <p class="mt-3 text-xs ">
-                                            Ofrecemos: 
-                                            ${obra_social}. ${materiales_incluidos ? "Materiales incluidos" : ""} </p>
-                                        
-                                    </article> 
-                                    <article class=" flex justify-end">
-                                        <button class="btn-edit m-1 px-1 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" data-id="${id}">Editar</button>
-                                        <button class="btn-delete text-white m-1 px-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] hover:text-white" data-id="${id}">Eliminar</button>
-                                    </article>
-                                </article>
+            <section class="my-3 px-2 flex flex-col lg:flex-row">
+                <article class="w-52 h-80 m-3 overflow-hidden lg:h-96" > 
+                    <img class="object-cover" src="${image}" alt="${jobName}">
+                </article>
+                
+                <article class="m-2.5 max-w-3xl lg:w-4/6">
+                    <h5 class="mb-2">${companyName}</h5>
+                    <h3>Buscamos: ${jobName}</h3>
+                    <p class="text-xs">${description}</p>
+                    
+                    <article class="flex flex-col lg:w-3/5 ">
+                        <article class="w-full pb-1 flex flex-row ">
+                            <article class="m-1 border-2 border-slate-100 rounded-md">
+                                <p class="m-2 text-xs">
+                                    <i class="fa-regular fa-building"></i>
+                                    ${location}</p>
+                                <p class="text-xs"> 
+                                    <i class="fa-solid fa-hammer"></i>
+                                    ${hasExperience ? "Con experiencia" : "Sin experiencia"}
+                                </p>
                             </article>
+                            <article class="m-1 border-2 border-slate-100 rounded-md">
+                                <p class="m-2 text-xs flex flex-col">
+                                    Ofrecemos: 
+                                    <span>
+                                    Cobertura: ${socialSecurity}.
+                                    </span>
+                                    <span> 
+                                     ${materialsIncluded ? "Materiales incluidos" : ""}
+                                    </span>
+                                </p>
+                                
+                            </article> 
+                        </article>
+                        <article class=" flex justify-end lg:w-[500px]">
+                            <button class="btn-edit m-1 p-2 bg-[#E1A41F] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#DA991B] hover:text-white" data-id="${id}">Editar</button>
+                            <button class="btn-delete text-white m-1 px-1 bg-gradient-to-r from-[#08101F] to-[#507DBC] rounded-md hover:bg-[#99490D] hover:shadow-md hover:shadow-[#08101F] hover:text-white" data-id="${id}">Eliminar</button>
                         </article>
                     </article>
                 </article>
+            
             </section>
         `
         for (const btn of $$(".btn-edit")) {
@@ -398,12 +406,14 @@ const initializeApp = () => {
         hideElement("#sidebar-menu")
         hideElement("#card-detail-cont")
         showElement("#add-job-form")
+        $("#form").reset()
     })
 
     /* $("#search-btn").addEventListener("click", () => {
         filterByCategory()
     })
  */
+
     $("#form").addEventListener("submit", (e) => {
         e.preventDefault()
         if(isSubmit){
@@ -428,6 +438,14 @@ const initializeApp = () => {
     $("#cancel-form-btn").addEventListener("click", () => {
         hideElement("#add-job-form")
         showElement("#cards-container")
+    })
+
+    $("#location-mode").addEventListener("change", () => {
+        if($("#location-mode").value === "presencial"){
+           $("#location-address").disabled = false
+        } else{
+            $("#location-address").disabled = true
+        }
     })
 
 }
